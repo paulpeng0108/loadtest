@@ -6,10 +6,10 @@ const userPool = new SharedArray('userPool', () => JSON.parse(open('./userPool.j
 const playbackToken = userPool[Math.floor(Math.random() * userPool.length)]
 
 const stages = []
-const totalStages = 6
-const duration = "5m"
+const totalStages = 10
+const duration = "2m"
 const rampingDuration = "1m"
-const vuIncrease = 50
+const vuIncrease = 100
 
 for(let i = 1; i <= totalStages; i ++){
     stages.push({
@@ -36,5 +36,7 @@ export default function () {
             headers:  {'nesn-playback-token': playbackToken}
         }
     )
+
+    sleep(20)
 
 }

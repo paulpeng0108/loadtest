@@ -36,7 +36,4 @@ export default function () {
             headers:  {'nesn-playback-token': playbackToken}
         }
     )
-
-    sleep(20)
-
 }

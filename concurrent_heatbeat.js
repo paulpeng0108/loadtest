@@ -7,8 +7,8 @@ const playbackToken = userPool[Math.floor(Math.random() * userPool.length)]
 
 const stages = []
 const totalStages = 10
-const duration = "30m"
-const rampingDuration = "30m"
+const duration = "30s"
+const rampingDuration = "30s"
 const vuIncrease = 50
 
 for(let i = 1; i <= totalStages; i ++){

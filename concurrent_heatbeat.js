@@ -6,13 +6,14 @@ const userPool = new SharedArray('userPool', () => JSON.parse(open('./userPool.j
 const playbackToken = userPool[Math.floor(Math.random() * userPool.length)]
 
 const stages = []
-const totalStages = 10
-const duration = "30s"
+const totalStages = 6
+const duration = "5m"
+const rampingDuration = "1m"
 const vuIncrease = 50
 
 for(let i = 1; i <= totalStages; i ++){
     stages.push({
-        duration: duration,
+        duration: rampingDuration,
         target: i * vuIncrease
     })
 

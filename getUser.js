@@ -16,7 +16,6 @@ export const options = {
 };
 
 export function setup() {
-    console.log("setup")
     let data = {
         "AuthParameters" : {
            "USERNAME" : "rokupaytest_1@nesn.com",
@@ -62,7 +61,5 @@ export default function ({AuthenticationResult}) {
                 }
             }
         )
-
-    console.log(JSON.stringify(res))
     
 }

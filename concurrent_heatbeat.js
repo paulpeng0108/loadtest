@@ -69,6 +69,4 @@ export default function (playbackToken) {
             headers:  {'nesn-playback-token': playbackToken}
         }
     )
-
-    console.log(JSON.stringify(res.json()))
 }

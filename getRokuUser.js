@@ -38,7 +38,5 @@ export default function () {
                 }
             }
         )
-
-    console.log(JSON.stringify(res.json()))
     
 }

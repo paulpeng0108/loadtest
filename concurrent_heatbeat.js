@@ -5,29 +5,30 @@ import { sleep } from 'k6';
 const userPool = new SharedArray('userPool', () => JSON.parse(open('./userPool.json')))
 const playbackToken = userPool[Math.floor(Math.random() * userPool.length)]
 
-// export const options = {
-//     stages: [
-//         { duration: '10s', target: 10 }
-//     ]
-// };
+const stages = []
+const totalStages = 10
+const duration = "30s"
+const vuIncrease = 50
+
+for(let i = 1; i <= totalStages; i ++){
+    stages.push({
+        duration: duration,
+        target: i * vuIncrease
+    })
+
+    stages.push({
+        duration: duration,
+        target: i * vuIncrease
+    })
+}
 
 export const options = {
-    stages: [
-        { duration: '30s', target: 100 },
-        { duration: '30s', target: 100 },
-        { duration: '30s', target: 200 },
-        { duration: '30s', target: 200 },
-        { duration: '30s', target: 300 },
-        { duration: '30s', target: 300 },
-        { duration: '30s', target: 400 },
-        { duration: '30s', target: 400 },
-        { duration: '30s', target: 500 },
-        { duration: '30s', target: 500 }
-    ]
+    stages: stages
 };
 
 export default function () {
-    const res = http.post(
+    
+    http.post(
         "https://b63dvs0d09.execute-api.us-east-2.amazonaws.com/loadtest/concurrent/heartbeat",
         null,
         {
@@ -35,5 +36,4 @@ export default function () {
         }
     )
 
-    //sleep()
 }

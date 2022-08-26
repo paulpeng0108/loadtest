@@ -9,7 +9,7 @@ const stages = []
 const totalStages = 10
 const duration = "30s"
 const rampingDuration = "30s"
-const vuIncrease = 50
+const vuIncrease = 100
 
 for(let i = 1; i <= totalStages; i ++){
     stages.push({

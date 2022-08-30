@@ -1,85 +1,75 @@
-// import http from 'k6/http';
+import { sleep } from 'k6';
+import http from 'k6/http';
 
-// export const options = {
-//     stages: [
-//         { duration: '5s', target: 1 },
-//         // { duration: '30s', target: 100 },
-//         // { duration: '2m', target: 100 },
-//         // { duration: '30s', target: 200 },
-//         // { duration: '2m', target: 200 },
-//         // { duration: '30s', target: 300 },
-//         // { duration: '2m', target: 300 },
-//         // { duration: '30s', target: 400 },
-//         // { duration: '2m', target: 400 },
-//         // { duration: '30s', target: 500 },
-//         // { duration: '2m', target: 500 }
-//     ]
-// };
+export const options = {
+    stages: [
+        { duration: '30s', target: 400 },
+        { duration: '2m', target: 400 },
+        { duration: '30s', target: 500 },
+        { duration: '2m', target: 500 },
+        { duration: '30s', target: 600 },
+        { duration: '2m', target: 600 },
+        { duration: '30s', target: 700 },
+        { duration: '2m', target: 700 },
+        { duration: '30s', target: 800 },
+        { duration: '2m', target: 800 },
+        { duration: '30s', target: 900 },
+        { duration: '2m', target: 900 }
+    ]
+};
 
-// export function setup() {
-//     let data = {
-//         "AuthParameters" : {
-//            "USERNAME" : "rokupaytest_1@nesn.com",
-//            "PASSWORD" : "asdfasdf"
-//         },
-//         "AuthFlow" : "USER_PASSWORD_AUTH",
-//         "ClientId" : "6ubem6njmkm3c0s69k1mvis288"
-//      };
+export function setup() {
+    let data = {
+        "AuthParameters" : {
+           "USERNAME" : "rokupaytest_1@nesn.com",
+           "PASSWORD" : "asdfasdf"
+        },
+        "AuthFlow" : "USER_PASSWORD_AUTH",
+        "ClientId" : "6ubem6njmkm3c0s69k1mvis288"
+     };
 
-//     // Using a JSON string as body
-//     let loginRes = http.post("https://cognito-idp.us-east-2.amazonaws.com/", JSON.stringify(data), {
-//         headers: { 
-//             'Content-Type': 'application/json',
-//             "Content-Type": "application/x-amz-json-1.1",
-//             "X-Amz-Target": "AWSCognitoIdentityProviderService.InitiateAuth"
-//         },
-//     });
+    // Using a JSON string as body
+    let loginRes = http.post("https://cognito-idp.us-east-2.amazonaws.com/", JSON.stringify(data), {
+        headers: { 
+            'Content-Type': 'application/json',
+            "Content-Type": "application/x-amz-json-1.1",
+            "X-Amz-Target": "AWSCognitoIdentityProviderService.InitiateAuth"
+        },
+    });
 
-//     const userRes = http.get(
-//         `https://b63dvs0d09.execute-api.us-east-2.amazonaws.com/loadtest/users/3dead207-ea7e-48fe-914d-5602aa233f18`,
-//         {
-//             headers:  {
-//                 'nesn-access-token': loginRes.json().AuthenticationResult.AccessToken,
-//                 'nesn-user-zipcode': "03218",
-//                 'nesn-device-id': "test-device-id-104",
-//                 "nesn-request-attempt":"nesn-request-attempt",
-//                 "nesn-location-check-type":"nesn-location-check-type",
-//                 "nesn-location-check-prompt":"nesn-location-check-prompt",
-//                 "nesn-state":"state",
-//                 "nesn-country":"country",
-//                 "nesn-video-id":"video",
-//                 "nesn-device-type":"device-type",
-//                 "nesn-device-hardware":"hardware",
-//                 "nesn-via-proxy":"true",
-//                 "nesn-mvpd":"mvpd",
-//                 "nesn-app-version": "version",
-//                 "nesn-video-asset-id": "-asset-id"
-//             }
-//         }
-//     )
-//     console.log(JSON.stringify(userRes.json()))
-//     return userRes.json().subscription.playbackToken
-// }
+    const userRes = http.get(
+        `https://b63dvs0d09.execute-api.us-east-2.amazonaws.com/loadtest/users/3dead207-ea7e-48fe-914d-5602aa233f18`,
+        {
+            headers:  {
+                'nesn-access-token': loginRes.json().AuthenticationResult.AccessToken,
+                'nesn-user-zipcode': "03218",
+                'nesn-device-id': "test-device-id-104",
+                "nesn-request-attempt":"nesn-request-attempt",
+                "nesn-location-check-type":"nesn-location-check-type",
+                "nesn-location-check-prompt":"nesn-location-check-prompt",
+                "nesn-state":"state",
+                "nesn-country":"country",
+                "nesn-video-id":"video",
+                "nesn-device-type":"device-type",
+                "nesn-device-hardware":"hardware",
+                "nesn-via-proxy":"true",
+                "nesn-mvpd":"mvpd",
+                "nesn-app-version": "version",
+                "nesn-video-asset-id": "-asset-id"
+            }
+        }
+    )
+    return userRes.json().subscription.playbackToken
+}
 
-// export default function (playbackToken) {
+export default function (playbackToken) {
 
+    let randomNum = Math.floor(Math.random() * 100);
 
-//     let randomNum = Math.floor(Math.random() * 100);
-
-//     let index = "index"
-
-//     if(randomNum == 0){
-
-
-        
-//     } else {
-
-//     }
-
-
-// master_720l_1462309
-
-// master_720l_1462452
-
-//     //http.get(`https://b63dvs0d09.execute-api.us-east-2.amazonaws.com/loadtest/play/nesn_stream/${playbackToken}/index`)
-// }
+    if(randomNum == 0){
+        http.get(`https://b63dvs0d09.execute-api.us-east-2.amazonaws.com/loadtest/play/nesn_stream/${playbackToken}/index`)
+    } else {
+        let res = http.get(`https://b63dvs0d09.execute-api.us-east-2.amazonaws.com/loadtest/play/nesn_stream/${playbackToken}/master_720l.m3u8`)
+        http.get(`https://b63dvs0d09.execute-api.us-east-2.amazonaws.com/loadtest/play/nesn_stream/${playbackToken}/${res.body.split('\n').find((i) => i.endsWith(".ts"))}`)
+    }
+}

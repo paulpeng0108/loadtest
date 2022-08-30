@@ -7,11 +7,11 @@ export const options = {
         { duration: '30s', target: 600 },
         { duration: '2m', target: 500 },
         { duration: '30s', target: 700 },
-        { duration: '2m', target: 700 }
+        { duration: '2m', target: 700 },
         { duration: '30s', target: 800 },
-        { duration: '2m', target: 800 }
+        { duration: '2m', target: 800 },
         { duration: '30s', target: 850 },
-        { duration: '2m', target: 850 }
+        { duration: '2m', target: 850 },
         { duration: '30s', target: 900 },
         { duration: '2m', target: 900 },
         { duration: '30s', target: 950 },

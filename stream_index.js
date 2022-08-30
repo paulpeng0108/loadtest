@@ -59,7 +59,7 @@ export default function (playbackToken) {
     if(randomNum == 0){
         http.get(`https://b63dvs0d09.execute-api.us-east-2.amazonaws.com/loadtest/play/nesn_stream/${playbackToken}/index`)
     } else {
-        let res = http.get(`https://b63dvs0d09.execute-api.us-east-2.amazonaws.com/loadtest/play/nesn_stream/${playbackToken}/master_720l.m3u8`)
-        http.get(`https://b63dvs0d09.execute-api.us-east-2.amazonaws.com/loadtest/play/nesn_stream/${playbackToken}/${res.body.split('\n').find((i) => i.endsWith(".ts"))}`)
+        http.get(`https://b63dvs0d09.execute-api.us-east-2.amazonaws.com/loadtest/play/nesn_stream/${playbackToken}/master_720l.m3u8`)
+        //http.get(`https://b63dvs0d09.execute-api.us-east-2.amazonaws.com/loadtest/play/nesn_stream/${playbackToken}/${res.body.split('\n').find((i) => i.endsWith(".ts"))}`)
     }
 }

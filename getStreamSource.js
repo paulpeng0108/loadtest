@@ -3,7 +3,7 @@ import http from 'k6/http';
 const stages = []
 const cycle = 1
 
-for(let i = 0; i < cycle; i++)}{
+for(let i = 0; i < cycle; i++){
     stages.push(        
         { duration: '1s', target: 1500 },
         { duration: '1s', target: 0 },

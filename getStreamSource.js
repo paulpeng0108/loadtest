@@ -1,18 +1,9 @@
 import http from 'k6/http';
 
-const stages = []
-const cycle = 30
-
-for(let i = 0; i < cycle; i++){
-    stages.push(        
-        { duration: '1s', target: 2000 },
-        { duration: '1s', target: 0 },
-        { duration: '1m', target: 0 }
-    )
-}
-
 export const options = {
-    stages: stages
+    stages: [
+        { duration: '1s', target: 1500 }
+    ]
 };
 
 export default function () {

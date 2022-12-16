@@ -1,14 +1,23 @@
 import http from 'k6/http';
 
+const stages = []
+const cycle = 1
+
+for(let i = 0; i < cycle; i++)}{
+    stages.push(        
+        { duration: '1s', target: 1500 },
+        { duration: '1s', target: 0 },
+        //{ duration: '1m', target: 0 }
+    )
+}
+
 export const options = {
-    stages: [
-        { duration: '1s', target: 1000 },
-    ]
+    stages: stages
 };
 
 export default function () {
 
-    const res = http.get(
+    http.get(
             `https://b63dvs0d09.execute-api.us-east-2.amazonaws.com/v2/stream?stream_type=nesn_stream`,
             {
                 headers:  {

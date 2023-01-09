@@ -7,8 +7,8 @@ const playbackToken = userPool[Math.floor(Math.random() * userPool.length)]
 
 export const options = {
     stages: [
-        {duration: "1m", target:1000},
-        {duration: "1h", target:1000}
+        {duration: "1m", target:100},
+        {duration: "1h", target:100}
     ]
 };
 
